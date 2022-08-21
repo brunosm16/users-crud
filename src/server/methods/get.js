@@ -1,5 +1,1 @@
-export const get = (key) => ({ db }) => db[key];
-
-export default {
-  get,
-};
+module.exports = (key) => ({ db }) => db[key];

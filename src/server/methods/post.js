@@ -2,13 +2,11 @@
 /* eslint-disable indent */
 /* eslint-disable implicit-arrow-linebreak */
 
-import parseBody from '../utils/parse-body';
+const parseBody = require('../utils/parse-body');
 
-export const post =
+module.exports =
   (key) =>
   (schema, { requestBody = {} }) => {
     const data = parseBody(requestBody);
     return schema.db[key].insert(data);
   };
-
-export default { post };

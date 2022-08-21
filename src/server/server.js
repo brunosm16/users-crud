@@ -1,10 +1,7 @@
 import { Server } from 'miragejs';
 import baseUserModel from './data/db';
 import {
-  getFrom,
-  postFrom,
-  patchFrom,
-  removeFrom,
+  getFrom, postFrom, patchFrom, removeFrom,
 } from './methods/index';
 
 window.server = new Server({
@@ -13,7 +10,7 @@ window.server = new Server({
   },
 
   routes() {
-    this.namespace = 'users-api';
+    this.namespace = 'api';
 
     this.timing = 800;
 
