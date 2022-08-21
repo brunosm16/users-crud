@@ -2,9 +2,9 @@
 /* eslint-disable indent */
 /* eslint-disable implicit-arrow-linebreak */
 
-import parseBody from './parse-body';
+import parseBody from '../parse-body';
 
-export const patchFrom =
+export const patch =
   (key) =>
   (schema, { requestBody = {} }) => {
     const data = parseBody(requestBody);
@@ -12,5 +12,5 @@ export const patchFrom =
   };
 
 export default {
-  patchFrom,
+  patch,
 };

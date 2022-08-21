@@ -2,13 +2,15 @@
 /* eslint-disable indent */
 /* eslint-disable implicit-arrow-linebreak */
 
-import parseBody from './parse-body';
+import parseBody from '../parse-body';
 
-export const postFrom =
+export const remove =
   (key) =>
   (schema, { requestBody = {} }) => {
     const data = parseBody(requestBody);
-    return schema.db[key].insert(data);
+    return schema.db[key].remove(data.id, data);
   };
 
-export default { postFrom };
+export default {
+  remove,
+};
