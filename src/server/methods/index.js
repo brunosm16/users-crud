@@ -1,11 +1,11 @@
-const get = require('./get');
-const post = require('./post');
-const patch = require('./patch');
-const remove = require('./remove');
+const getFrom = require('./get');
+const postFrom = require('./post');
+const patchFrom = require('./patch');
+const removeFrom = require('./remove');
 
 module.exports = {
-  get,
-  post,
-  patch,
-  remove,
+  getFrom,
+  postFrom,
+  patchFrom,
+  removeFrom,
 };

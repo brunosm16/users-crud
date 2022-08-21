@@ -2,7 +2,7 @@
 /* eslint-disable indent */
 /* eslint-disable implicit-arrow-linebreak */
 
-import parseBody from '../parse-body';
+import parseBody from '../utils/parse-body';
 
 export const patch =
   (key) =>
