@@ -45,17 +45,21 @@ export default {
   },
 
   methods: {
+    getBaseURLById(id) {
+      return `${this.apiURL}/${id}`;
+    },
+
     async getUsers() {
       this.response = await getHttp(this.apiURL);
     },
 
     async createUser(userData) {
-      await postHttp(this.apiURL, userData);
+      await postHttp(this.apiURL, { userData });
       await this.getUsers();
     },
 
     async updateUser(userData) {
-      await patchHttp(`${this.apiURL}/${userData.id}`, { userData });
+      await patchHttp(this.getBaseURLById(userData[0]?.id), { userData });
       await this.getUsers();
     },
   },
