@@ -15,11 +15,21 @@
 
     <button style="margin: 20px" @click="createUser(JSON.parse(userData))">Create User</button>
     <button style="margin: 20px" @click="updateUser(JSON.parse(userData))">Update User</button>
+
+    <h1>Delete User</h1>
+
+    <label for="userData">
+      Delete User By Id:
+      <input type="number" step="1" v-model="userId" />
+    </label>
+
+    <button style="margin: 20px" @click="deleteUser">Delete User</button>
   </div>
 </template>
 
 <script>
-import { getHttp, postHttp, patchHttp } from './http-utils/fetch-api';
+// eslint-disable-next-line object-curly-newline
+import { getHttp, postHttp, patchHttp, deleteHttp } from './http-utils/fetch-api';
 
 export default {
   name: 'App',
@@ -60,6 +70,11 @@ export default {
 
     async updateUser(userData) {
       await patchHttp(this.getBaseURLById(userData[0]?.id), { userData });
+      await this.getUsers();
+    },
+
+    async deleteUser() {
+      await deleteHttp(this.getBaseURLById(this.userId), {}, {}, 'text');
       await this.getUsers();
     },
   },
