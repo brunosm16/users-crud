@@ -60,7 +60,8 @@ export default {
     },
 
     async getUsers() {
-      this.response = await getHttp(this.apiURL);
+      const { data } = await getHttp(this.apiURL);
+      this.response = data;
     },
 
     async createUser(userData) {
@@ -74,7 +75,7 @@ export default {
     },
 
     async deleteUser() {
-      await deleteHttp(this.getBaseURLById(this.userId), {}, {}, 'text');
+      await deleteHttp(this.getBaseURLById(this.userId));
       await this.getUsers();
     },
   },
