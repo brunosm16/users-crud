@@ -1,5 +1,12 @@
-import { createApp } from 'vue';
-import App from './App.vue';
 import './server/server';
+import Vue from 'vue';
+import Vuesax from 'vuesax';
+import App from './App.vue';
 
-createApp(App).mount('#app');
+Vue.use(Vuesax);
+
+Vue.config.productionTip = false;
+
+new Vue({
+  render: (h) => h(App),
+}).$mount('#app');

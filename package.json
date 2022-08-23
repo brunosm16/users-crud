@@ -13,7 +13,7 @@
     "material-icons": "^1.11.10",
     "miragejs": "^0.1.45",
     "sweetalert2": "^11.4.29",
-    "vue": "^3.2.13",
+    "vue": "^2.6.10",
     "vuesax": "^3.12.2"
   },
   "devDependencies": {
