@@ -10,6 +10,10 @@ window.server = new Server({
   },
 
   routes() {
+    this.passthrough();
+
+    this.passthrough('https://jsonplaceholder.typicode.com/**');
+
     this.namespace = 'api';
 
     this.timing = 800;
