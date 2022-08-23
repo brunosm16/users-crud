@@ -1,7 +1,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 import { baseFetch, jsonPlaceHolderAPI } from './http-helper';
 
-export const getTodos = async (userId) => jsonPlaceHolderAPI.get('/todos', { params: { userId } });
+export const getTodos = async (userId) => jsonPlaceHolderAPI.get('todos', { params: { userId } });
 
 export const getHttp = async (url, params, options) =>
   baseFetch(url, 'get', { ...options, params });

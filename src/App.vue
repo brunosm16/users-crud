@@ -24,12 +24,18 @@
     </label>
 
     <button style="margin: 20px" @click="deleteUser">Delete User</button>
+
+    <label for="userData">
+      <input type="number" step="1" v-model="userId" />
+    </label>
+
+    <button style="margin: 20px" @click="getUserTodos">Get User Todo's</button>
   </div>
 </template>
 
 <script>
 // eslint-disable-next-line object-curly-newline
-import { getHttp, postHttp, patchHttp, deleteHttp } from './http-utils/fetch-api';
+import { getHttp, postHttp, patchHttp, deleteHttp, getTodos } from './http-utils/fetch-api';
 
 export default {
   name: 'App',
@@ -37,6 +43,7 @@ export default {
   data: () => ({
     userData: '',
     userId: undefined,
+    userTodos: [],
     response: undefined,
   }),
 
@@ -77,6 +84,10 @@ export default {
     async deleteUser() {
       await deleteHttp(this.getBaseURLById(this.userId));
       await this.getUsers();
+    },
+
+    async getUserTodos() {
+      this.userTodos = await getTodos(this.userId);
     },
   },
 };
