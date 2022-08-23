@@ -11,6 +11,7 @@
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
     "miragejs": "^0.1.45",
+    "sweetalert2": "^11.4.29",
     "vue": "^3.2.13"
   },
   "devDependencies": {
