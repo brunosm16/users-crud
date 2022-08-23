@@ -1,31 +1,59 @@
+/* eslint-disable no-tabs */
+/* eslint-disable indent */
 import Swal from 'sweetalert2';
 
-const postMethods = ['patch', 'post'];
+const methodsBodyIdRequired = ['patch'];
+const methodsBodyIdForbidden = ['post', 'remove'];
+
+const hasIdField = (data) => Object.prototype.hasOwnProperty.call(data, 'id');
+
+const validateUserData = (data) => {
+	if (!data && !data.userData) {
+		throw new Error('No userData was provided');
+	}
+};
+
+const validateRequiredId = ({ data }) => {
+	validateUserData(data);
+
+	const { userData } = data;
+
+	if (!hasIdField(userData[0]) || !userData[0].id) {
+		throw new Error('ID is required for this request');
+	}
+};
+
+const validateForbiddenId = ({ data }) => {
+	validateUserData(data);
+
+	const { userData } = data;
+
+	if (hasIdField(userData[0])) {
+		throw new Error('ID is forbidden for this request');
+	}
+};
 
 export const requestInterceptor = async (config) => {
-  const configData = config.data.data;
-  const hasId = Object.prototype.hasOwnProperty.call(configData, 'id') && !!configData.id;
-  const hasPostMethod = postMethods.includes(config.method.toLocaleLowerCase());
+	const hasRequiredBodyIdMethod = methodsBodyIdRequired.includes(config.method.toLocaleLowerCase());
+	const hasForbiddenBodyIdMethod = methodsBodyIdForbidden.includes(
+		config.method.toLocaleLowerCase(),
+	);
 
-  if (!hasPostMethod) {
-    throw new Error('Invalid POST Method');
-  }
+	if (hasRequiredBodyIdMethod) {
+		validateRequiredId(config);
+	}
 
-  if (!hasId) {
-    throw new Error('ID is required for this request');
-  }
+	if (hasForbiddenBodyIdMethod) {
+		validateForbiddenId(config);
+	}
 
-  return config;
+	return config;
 };
 
 export const responseInterceptor = (response) => response;
 
 export const errorInterceptor = (error) => {
-  Swal.fire({
-    type: 'error',
-    title: 'Error!',
-    text: error.message,
-  });
+	Swal.fire('Error!', `${error.message}`, 'error');
 
-  return Promise.reject(error);
+	return Promise.reject(error);
 };
