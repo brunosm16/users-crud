@@ -3,9 +3,7 @@
 </template>
 
 <script>
-import {
-  ListUsers, CreateUser, UpdateUser, ViewUser,
-} from './components/Crud';
+import { ListUsers, CreateUser, UpdateUser, ViewUser } from './components/Crud';
 import NotFoundError from './components/NotFoundError.vue';
 
 export default {
@@ -15,6 +13,17 @@ export default {
     componentType: 'list-users',
     userId: 0,
   }),
+
+  provide() {
+    const base = {};
+
+    Object.defineProperty(base, 'userId', {
+      enumerable: true,
+      get: () => Number(this.userId),
+    });
+
+    return base;
+  },
 
   computed: {
     currentComponent() {
