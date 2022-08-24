@@ -1,9 +1,17 @@
 <template>
-  <div id="#app"></div>
+  <div id="#app">
+    <vs-row>
+      <vs-col vs-type="flex" vs-justify="left" vs-align="left" vs-w="12">
+        <component :is="componentType" @change-component="changeComponent" />
+      </vs-col>
+    </vs-row>
+  </div>
 </template>
 
 <script>
+// eslint-disable-next-line object-curly-newline
 import { ListUsers, CreateUser, UpdateUser, ViewUser } from './components/Crud';
+
 import NotFoundError from './components/NotFoundError.vue';
 
 export default {
