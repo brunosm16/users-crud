@@ -41,6 +41,13 @@ export default {
       }
     },
   },
+
+  methods: {
+    changeComponent({ componentType = '', userId = '' }) {
+      this.componentType = componentType;
+      this.userId = userId;
+    },
+  },
 };
 </script>
 
