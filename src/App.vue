@@ -2,7 +2,7 @@
   <div id="#app">
     <vs-row>
       <vs-col vs-type="flex" vs-justify="left" vs-align="left" vs-w="12">
-        <component :is="componentType" @change-component="changeComponent" />
+        <component :is="currentComponent" @change-component="changeComponent" />
       </vs-col>
     </vs-row>
   </div>
