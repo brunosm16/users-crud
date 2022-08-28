@@ -97,6 +97,7 @@
             type="filled"
             icon="fiber_new"
             size="small"
+            @click="changeComponent('create-user')"
           >
             Create A New User
           </vs-button>
