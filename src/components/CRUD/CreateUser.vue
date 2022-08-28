@@ -1,9 +1,15 @@
 <template>
   <div class="create-user-component">
-    <vs-card>
+    <vs-card class="create-user-component__card">
       <template #header>
         <h3>Create User</h3>
       </template>
+
+      <vs-row>
+        <vs-col>
+          <UserForm v-model="formData" />
+        </vs-col>
+      </vs-row>
 
       <template #footer>
         <vs-row vs-justify="flex-start">
@@ -31,17 +37,34 @@
 
 <script>
 import ChangeComponent from '@/mixins/change-component';
+import UserForm from './UserForm.vue';
 
 export default {
   name: 'CreateUser',
 
   mixins: [ChangeComponent],
 
+  components: {
+    UserForm,
+  },
+
+  data: () => ({
+    formData: {
+      name: '',
+      email: '',
+      age: '',
+      company: '',
+      isActive: '',
+      phone: '',
+      address: '',
+    },
+  }),
+
   methods: {
     createUser() {
       console.log('Create User');
 
-      this.changeComponent('list-users');
+      // this.changeComponent('list-users');
     },
 
     cancelCreate() {
@@ -54,5 +77,11 @@ export default {
 <style lang="scss" scoped>
 .vs-button {
   margin-right: 0.625rem;
+}
+
+.create-user-component {
+  &__card {
+    margin: 1.75rem;
+  }
 }
 </style>
