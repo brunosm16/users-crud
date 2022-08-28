@@ -7,6 +7,6 @@ const parseBody = require('../utils/parse-body');
 module.exports =
   (key) =>
   (schema, { requestBody = {} }) => {
-    const { userData } = parseBody(requestBody);
-    return schema.db[key].update(userData[0].id, userData[0]);
+    const { data } = parseBody(requestBody);
+    return schema.db[key].update(data.id, data);
   };

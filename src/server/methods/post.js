@@ -7,6 +7,6 @@ const parseBody = require('../utils/parse-body');
 module.exports =
   (key) =>
   (schema, { requestBody = {} }) => {
-    const { userData } = parseBody(requestBody);
-    return schema.db[key].insert(userData);
+    const { data } = parseBody(requestBody);
+    return schema.db[key].insert(data);
   };
