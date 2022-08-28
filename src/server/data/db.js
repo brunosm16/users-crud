@@ -1,15 +1,6 @@
 export default {
   users: [
     {
-      name: 'Maxine Key',
-      email: 'maxinekey@kongle.com',
-      age: 33,
-      company: 'GEEKFARM',
-      isActive: false,
-      phone: '+1 (982) 457-2609',
-      address: '403 Crooke Avenue, Chical, Northern Mariana Islands,    4730',
-    },
-    {
       name: 'Paige Chandler',
       email: 'paigechandler@geekfarm.com',
       age: 27,
