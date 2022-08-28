@@ -7,6 +7,12 @@
 <script>
 export default {
   name: 'UpdateUser',
+
+  inject: ['userId'],
+
+  created() {
+    console.log(`Update user with id : ${this.userId}`);
+  },
 };
 </script>
 

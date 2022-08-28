@@ -11,7 +11,7 @@ export default {
   inject: ['userId'],
 
   created() {
-    console.log(this.userId);
+    console.log(`View user with id : ${this.userId}`);
   },
 };
 </script>

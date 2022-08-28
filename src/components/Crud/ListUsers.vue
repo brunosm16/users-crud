@@ -62,13 +62,18 @@
                     type="filled"
                     icon="remove_red_eye"
                     size="small"
+                    @click="
+                      changeComponent('view-user', dataTable?.data[index]?.id)
+                    "
                   />
                   <vs-button
                     color="success"
                     type="filled"
                     icon="edit"
                     size="small"
-                    @click="changeComponent('view-user', dataTable?.data[index]?.id)"
+                    @click="
+                      changeComponent('update-user', dataTable?.data[index]?.id)
+                    "
                   />
 
                   <vs-button
