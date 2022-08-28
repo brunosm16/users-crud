@@ -54,6 +54,34 @@
               Actions
             </vs-th>
           </template>
+
+          <template v-slot:default="dataTable">
+            <vs-tr v-for="(tr, index) in dataTable.data" :key="index">
+              <vs-td :data="dataTable?.data[index]?.id">
+                {{ dataTable?.data[index]?.id }}
+              </vs-td>
+
+              <vs-td :data="dataTable?.data[index]?.name">
+                {{ dataTable?.data[index]?.name }}
+              </vs-td>
+
+              <vs-td :data="dataTable?.data[index]?.email">
+                {{ dataTable?.data[index]?.email }}
+              </vs-td>
+
+              <vs-td :data="dataTable?.data[index]?.country">
+                {{ dataTable?.data[index]?.country }}
+              </vs-td>
+
+              <vs-td :data="dataTable?.data[index]?.phone">
+                {{ dataTable?.data[index]?.phone }}
+              </vs-td>
+
+              <vs-td :data="dataTable?.data[index]?.dateOfBirth">
+                {{ dataTable?.data[index]?.dateOfBirth }}
+              </vs-td>
+            </vs-tr>
+          </template>
         </vs-table>
       </vs-col>
     </vs-row>

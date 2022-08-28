@@ -4,6 +4,7 @@ export default {
     email: 'brunoSilveira@fakeemail.com',
     age: '24',
     country: 'Brazil',
-    active: true,
+    phone: '+1-202-555-0128',
+    dateOfBirth: '10/04/1998',
   },
 };
