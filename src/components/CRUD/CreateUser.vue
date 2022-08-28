@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-deprecated-v-on-native-modifier -->
 <template>
   <div class="create-user-component">
     <vs-card class="create-user-component__card">
@@ -18,7 +19,7 @@
             size="small"
             color="success"
             icon="save"
-            @click="createUser"
+            @click.native="createUser"
             >Create New User</vs-button
           >
           <vs-button
@@ -26,7 +27,7 @@
             size="small"
             color="danger"
             icon="cancel"
-            @click="cancelCreate"
+            @click.native="cancelCreate"
             >Cancel</vs-button
           >
         </vs-row>

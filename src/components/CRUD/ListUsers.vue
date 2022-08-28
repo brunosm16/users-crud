@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-deprecated-v-on-native-modifier -->
 <template>
   <div class="list-users-component">
     <vs-card class="list-users-component__card">
@@ -97,7 +98,7 @@
             type="filled"
             icon="fiber_new"
             size="small"
-            @click="changeComponent('create-user')"
+            @click.native="changeComponent('create-user')"
           >
             Create A New User
           </vs-button>
