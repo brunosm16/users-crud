@@ -6,13 +6,13 @@
       </template>
 
       <vs-row>
-        <vs-col>
+        <vs-col vs-type="flex" vs-justify="left" vs-align="left" vs-w="12">
           <UserForm v-model="formData" />
         </vs-col>
       </vs-row>
 
       <template #footer>
-        <vs-row vs-justify="flex-start">
+        <vs-row vs-justify="flex-start" >
           <vs-button
             type="filled"
             size="small"
@@ -54,7 +54,6 @@ export default {
       email: '',
       age: '',
       company: '',
-      isActive: '',
       phone: '',
       address: '',
     },
