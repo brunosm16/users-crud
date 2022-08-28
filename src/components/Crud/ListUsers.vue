@@ -4,109 +4,122 @@
       <template #header>
         <h3>Users List</h3>
       </template>
-    </vs-card>
 
-    <vs-row class="list-users-component__row">
-      <vs-col
-        class="list-users-component__row--col"
-        vs-type="flex"
-        vs-justify="left"
-        vs-align="left"
-        vs-w="12"
-      >
-        <vs-table
-          class="list-users-component__row--col__table"
-          :data="users"
-          search
-          strip
-          pagination
-          max-items="5"
+      <vs-row class="list-users-component__row">
+        <vs-col
+          class="list-users-component__row--col"
+          vs-type="flex"
+          vs-justify="left"
+          vs-align="left"
+          vs-w="12"
         >
-          <template #thead>
-            <vs-th
-              class="list-users-component__row--col__table--head"
-              sort-key="userId"
-            >
-              #
-            </vs-th>
+          <vs-table
+            class="list-users-component__row--col__table"
+            :data="users"
+            search
+            strip
+            pagination
+            max-items="5"
+          >
+            <template #thead>
+              <vs-th
+                class="list-users-component__row--col__table--head"
+                sort-key="userId"
+              >
+                #
+              </vs-th>
 
-            <vs-th class="list-users-component__row--col__table--head">
-              Name
-            </vs-th>
+              <vs-th class="list-users-component__row--col__table--head">
+                Name
+              </vs-th>
 
-            <vs-th class="list-users-component__row--col__table--head">
-              Email
-            </vs-th>
+              <vs-th class="list-users-component__row--col__table--head">
+                Email
+              </vs-th>
 
-            <vs-th class="list-users-component__row--col__table--head">
-              Country
-            </vs-th>
+              <vs-th class="list-users-component__row--col__table--head">
+                Country
+              </vs-th>
 
-            <vs-th class="list-users-component__row--col__table--head">
-              Phone
-            </vs-th>
+              <vs-th class="list-users-component__row--col__table--head">
+                Phone
+              </vs-th>
 
-            <vs-th class="list-users-component__row--col__table--head">
-              Date of Birth
-            </vs-th>
+              <vs-th class="list-users-component__row--col__table--head">
+                Date of Birth
+              </vs-th>
 
-            <vs-th class="list-users-component__row--col__table--head">
-              Actions
-            </vs-th>
-          </template>
+              <vs-th class="list-users-component__row--col__table--head">
+                Actions
+              </vs-th>
+            </template>
 
-          <template v-slot:default="dataTable">
-            <vs-tr v-for="(tr, index) in dataTable.data" :key="index">
-              <vs-td :data="dataTable?.data[index]?.id">
-                {{ dataTable?.data[index]?.id }}
-              </vs-td>
+            <template v-slot:default="dataTable">
+              <vs-tr v-for="(tr, index) in dataTable.data" :key="index">
+                <vs-td :data="dataTable?.data[index]?.id">
+                  {{ dataTable?.data[index]?.id }}
+                </vs-td>
 
-              <vs-td :data="dataTable?.data[index]?.name">
-                {{ dataTable?.data[index]?.name }}
-              </vs-td>
+                <vs-td :data="dataTable?.data[index]?.name">
+                  {{ dataTable?.data[index]?.name }}
+                </vs-td>
 
-              <vs-td :data="dataTable?.data[index]?.email">
-                {{ dataTable?.data[index]?.email }}
-              </vs-td>
+                <vs-td :data="dataTable?.data[index]?.email">
+                  {{ dataTable?.data[index]?.email }}
+                </vs-td>
 
-              <vs-td :data="dataTable?.data[index]?.country">
-                {{ dataTable?.data[index]?.country }}
-              </vs-td>
+                <vs-td :data="dataTable?.data[index]?.country">
+                  {{ dataTable?.data[index]?.country }}
+                </vs-td>
 
-              <vs-td :data="dataTable?.data[index]?.phone">
-                {{ dataTable?.data[index]?.phone }}
-              </vs-td>
+                <vs-td :data="dataTable?.data[index]?.phone">
+                  {{ dataTable?.data[index]?.phone }}
+                </vs-td>
 
-              <vs-td :data="dataTable?.data[index]?.dateOfBirth">
-                {{ dataTable?.data[index]?.dateOfBirth }}
-              </vs-td>
+                <vs-td :data="dataTable?.data[index]?.dateOfBirth">
+                  {{ dataTable?.data[index]?.dateOfBirth }}
+                </vs-td>
 
-              <vs-td :data="dataTable?.data[index]?.id">
-                <vs-button
-                  color="primary"
-                  type="filled"
-                  icon="remove_red_eye"
-                  size="small"
-                />
-                <vs-button
-                  color="success"
-                  type="filled"
-                  icon="edit"
-                  size="small"
-                />
+                <vs-td :data="dataTable?.data[index]?.id">
+                  <vs-button
+                    color="primary"
+                    type="filled"
+                    icon="remove_red_eye"
+                    size="small"
+                  />
+                  <vs-button
+                    color="success"
+                    type="filled"
+                    icon="edit"
+                    size="small"
+                  />
 
-                <vs-button
-                  color="danger"
-                  type="filled"
-                  icon="delete"
-                  size="small"
-                />
-              </vs-td>
-            </vs-tr>
-          </template>
-        </vs-table>
-      </vs-col>
-    </vs-row>
+                  <vs-button
+                    color="danger"
+                    type="filled"
+                    icon="delete"
+                    size="small"
+                  />
+                </vs-td>
+              </vs-tr>
+            </template>
+          </vs-table>
+        </vs-col>
+      </vs-row>
+
+      <template #footer>
+        <vs-row vs-justify="flex-start">
+          <vs-button
+            color="primary"
+            type="filled"
+            icon="fiber_new"
+            size="small"
+          >
+            Create A New User
+          </vs-button>
+        </vs-row>
+      </template>
+    </vs-card>
   </div>
 </template>
 
