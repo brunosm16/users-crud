@@ -68,6 +68,7 @@
                     type="filled"
                     icon="edit"
                     size="small"
+                    @click="changeComponent('view-user', dataTable?.data[index]?.id)"
                   />
 
                   <vs-button

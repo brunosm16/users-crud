@@ -7,6 +7,12 @@
 <script>
 export default {
   name: 'ViewUser',
+
+  inject: ['userId'],
+
+  created() {
+    console.log(this.userId);
+  },
 };
 </script>
 
