@@ -63,7 +63,7 @@
                     type="filled"
                     icon="remove_red_eye"
                     size="small"
-                    @click="
+                    @click.native="
                       changeComponent('view-user', dataTable?.data[index]?.id)
                     "
                   />
@@ -72,7 +72,7 @@
                     type="filled"
                     icon="edit"
                     size="small"
-                    @click="
+                    @click.native="
                       changeComponent('update-user', dataTable?.data[index]?.id)
                     "
                   />
@@ -82,7 +82,7 @@
                     type="filled"
                     icon="delete"
                     size="small"
-                    @click="deleteUserById(dataTable?.data[index]?.id)"
+                    @click.native="deleteUserById(dataTable?.data[index]?.id)"
                   />
                 </vs-td>
               </vs-tr>

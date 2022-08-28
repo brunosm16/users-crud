@@ -18,7 +18,7 @@ export default {
   name: 'App',
 
   data: () => ({
-    componentType: 'create-user',
+    componentType: 'list-users',
     userId: 0,
   }),
 
