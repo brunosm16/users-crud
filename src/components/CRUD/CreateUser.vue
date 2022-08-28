@@ -12,7 +12,7 @@
       </vs-row>
 
       <template #footer>
-        <vs-row vs-justify="flex-start" >
+        <vs-row vs-justify="flex-start">
           <vs-button
             type="filled"
             size="small"
@@ -36,13 +36,15 @@
 </template>
 
 <script>
+import { postHttp } from '@/http-utils/fetch-api';
 import ChangeComponent from '@/mixins/change-component';
+import ApiUrl from '@/mixins/api-url';
 import UserForm from './UserForm.vue';
 
 export default {
   name: 'CreateUser',
 
-  mixins: [ChangeComponent],
+  mixins: [ChangeComponent, ApiUrl],
 
   components: {
     UserForm,
@@ -60,10 +62,9 @@ export default {
   }),
 
   methods: {
-    createUser() {
-      console.log('Create User');
-
-      // this.changeComponent('list-users');
+    async createUser() {
+      await postHttp(this.apiURL, { data: { ...this.formData } });
+      this.changeComponent('list-users');
     },
 
     cancelCreate() {

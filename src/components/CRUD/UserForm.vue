@@ -97,7 +97,7 @@ export default {
 
     form: {
       handler(newFormData) {
-        this.emit('input', newFormData);
+        this.$emit('input', newFormData);
       },
       deep: true,
     },
