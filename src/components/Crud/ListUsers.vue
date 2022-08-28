@@ -80,6 +80,28 @@
               <vs-td :data="dataTable?.data[index]?.dateOfBirth">
                 {{ dataTable?.data[index]?.dateOfBirth }}
               </vs-td>
+
+              <vs-td :data="dataTable?.data[index]?.id">
+                <vs-button
+                  color="primary"
+                  type="filled"
+                  icon="remove_red_eye"
+                  size="small"
+                />
+                <vs-button
+                  color="success"
+                  type="filled"
+                  icon="edit"
+                  size="small"
+                />
+
+                <vs-button
+                  color="danger"
+                  type="filled"
+                  icon="delete"
+                  size="small"
+                />
+              </vs-td>
             </vs-tr>
           </template>
         </vs-table>
@@ -127,6 +149,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.vs-button {
+  margin-right: 0.875rem;
+}
+
 .list-users-component {
   &__card {
     margin: 1.75rem;
