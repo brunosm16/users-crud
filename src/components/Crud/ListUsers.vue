@@ -15,11 +15,13 @@
 
               <vs-th> Email </vs-th>
 
-              <vs-th> Country </vs-th>
+              <vs-th> Age </vs-th>
+
+              <vs-th> Company </vs-th>
 
               <vs-th> Phone </vs-th>
 
-              <vs-th> Date of Birth </vs-th>
+              <vs-th> Address </vs-th>
 
               <vs-th> Actions </vs-th>
             </template>
@@ -38,16 +40,20 @@
                   {{ dataTable?.data[index]?.email }}
                 </vs-td>
 
-                <vs-td :data="dataTable?.data[index]?.country">
-                  {{ dataTable?.data[index]?.country }}
+                <vs-td :data="dataTable?.data[index]?.age">
+                  {{ dataTable?.data[index]?.age }}
+                </vs-td>
+
+                <vs-td :data="dataTable?.data[index]?.company">
+                  {{ dataTable?.data[index]?.company }}
                 </vs-td>
 
                 <vs-td :data="dataTable?.data[index]?.phone">
                   {{ dataTable?.data[index]?.phone }}
                 </vs-td>
 
-                <vs-td :data="dataTable?.data[index]?.dateOfBirth">
-                  {{ dataTable?.data[index]?.dateOfBirth }}
+                <vs-td :data="dataTable?.data[index]?.address">
+                  {{ dataTable?.data[index]?.address }}
                 </vs-td>
 
                 <vs-td :data="dataTable?.data[index]?.id">
@@ -105,7 +111,6 @@ export default {
 
   data: () => ({
     users: [],
-    userId: null,
   }),
 
   async beforeMount() {
@@ -117,13 +122,11 @@ export default {
       const { data } = await getHttp(this.apiURL);
 
       this.users = data;
-
-      console.log(this.users);
     },
 
-    async deleteUserById() {
-      if (this.userId) {
-        await deleteHttp(this.getApiUrlById(this.userId));
+    async deleteUserById(userId) {
+      if (userId) {
+        await deleteHttp(this.getApiUrlById(userId));
         await this.fetchUsers();
       }
     },
