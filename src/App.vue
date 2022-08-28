@@ -10,7 +10,7 @@
 
 <script>
 // eslint-disable-next-line object-curly-newline
-import { ListUsers, CreateUser, UpdateUser, ViewUser } from './components/Crud';
+import { ListUsers, CreateUser, UpdateUser, ViewUser } from './components/CRUD';
 
 import NotFoundError from './components/NotFoundError.vue';
 
@@ -18,7 +18,7 @@ export default {
   name: 'App',
 
   data: () => ({
-    componentType: 'list-users',
+    componentType: 'create-user',
     userId: 0,
   }),
 
