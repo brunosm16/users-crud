@@ -2,56 +2,26 @@
   <div class="list-users-component">
     <vs-card class="list-users-component__card">
       <template #header>
-        <h3>Users List</h3>
+        <h3 class="list-users-component__card--header">Users List</h3>
       </template>
 
-      <vs-row class="list-users-component__row">
-        <vs-col
-          class="list-users-component__row--col"
-          vs-type="flex"
-          vs-justify="left"
-          vs-align="left"
-          vs-w="12"
-        >
-          <vs-table
-            class="list-users-component__row--col__table"
-            :data="users"
-            search
-            strip
-            pagination
-            max-items="5"
-          >
+      <vs-row>
+        <vs-col vs-type="flex" vs-justify="left" vs-align="left" vs-w="12">
+          <vs-table :data="users" search strip pagination max-items="5">
             <template #thead>
-              <vs-th
-                class="list-users-component__row--col__table--head"
-                sort-key="userId"
-              >
-                #
-              </vs-th>
+              <vs-th sort-key="userId"> # </vs-th>
 
-              <vs-th class="list-users-component__row--col__table--head">
-                Name
-              </vs-th>
+              <vs-th> Name </vs-th>
 
-              <vs-th class="list-users-component__row--col__table--head">
-                Email
-              </vs-th>
+              <vs-th> Email </vs-th>
 
-              <vs-th class="list-users-component__row--col__table--head">
-                Country
-              </vs-th>
+              <vs-th> Country </vs-th>
 
-              <vs-th class="list-users-component__row--col__table--head">
-                Phone
-              </vs-th>
+              <vs-th> Phone </vs-th>
 
-              <vs-th class="list-users-component__row--col__table--head">
-                Date of Birth
-              </vs-th>
+              <vs-th> Date of Birth </vs-th>
 
-              <vs-th class="list-users-component__row--col__table--head">
-                Actions
-              </vs-th>
+              <vs-th> Actions </vs-th>
             </template>
 
             <template v-slot:default="dataTable">
