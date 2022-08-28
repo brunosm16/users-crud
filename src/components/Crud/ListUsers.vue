@@ -75,6 +75,7 @@
                     type="filled"
                     icon="delete"
                     size="small"
+                    @click="deleteUserById(dataTable?.data[index]?.id)"
                   />
                 </vs-td>
               </vs-tr>
