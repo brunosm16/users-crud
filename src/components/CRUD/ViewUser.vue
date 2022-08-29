@@ -8,7 +8,7 @@
 
       <vs-row>
         <vs-col>
-          <UserForm v-model="user" />
+          <UserForm v-model="user" disabled/>
         </vs-col>
       </vs-row>
 
