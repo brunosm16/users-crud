@@ -1,7 +1,11 @@
 import { Server } from 'miragejs';
 import baseUserModel from './data/db';
 import {
-  getFrom, postFrom, patchFrom, removeFrom,
+  getFrom,
+  getFromById,
+  postFrom,
+  patchFrom,
+  removeFrom,
 } from './methods/index';
 
 window.server = new Server({
@@ -19,6 +23,8 @@ window.server = new Server({
     this.timing = 800;
 
     this.get('/users', getFrom('users'));
+
+    this.get('/users/:id', getFromById('users'));
 
     this.post('/users', postFrom('users'));
 
