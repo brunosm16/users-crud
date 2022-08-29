@@ -1,13 +1,44 @@
+<!-- eslint-disable vue/no-deprecated-v-on-native-modifier -->
 <template>
   <div class="update-user-component">
-    <span>Update User Component</span>
+    <vs-card>
+      <template #header>
+        <h3>Update User</h3>
+      </template>
+
+      <vs-row>
+        <vs-col>
+          <UserForm v-model="user" />
+        </vs-col>
+      </vs-row>
+
+      <template #footer>
+        <vs-row>
+          <vs-button
+            color="success"
+            type="filled"
+            icon="save"
+            size="small"
+            @click.native="updateUser"
+          />
+          <vs-button
+            color="danger"
+            type="filled"
+            icon="cancel"
+            size="small"
+            @click.native="changeComponent('list-users')"
+          />
+        </vs-row>
+      </template>
+    </vs-card>
   </div>
 </template>
 
 <script>
-import { getHttp } from '@/http-utils/fetch-api';
+import { getHttp, patchHttp } from '@/http-utils/fetch-api';
 import ChangeComponent from '@/mixins/change-component';
 import ApiUrl from '@/mixins/api-url';
+import UserForm from '@/components/CRUD/UserForm.vue';
 
 export default {
   name: 'UpdateUser',
@@ -15,6 +46,10 @@ export default {
   inject: ['userId'],
 
   mixins: [ChangeComponent, ApiUrl],
+
+  components: {
+    UserForm,
+  },
 
   data: () => ({
     user: {
@@ -28,13 +63,21 @@ export default {
   }),
 
   async beforeMount() {
-    await this.fetchUserById(this.userId);
+    await this.fetchUserById();
   },
 
   methods: {
-    async fetchUserById(id) {
-      const { data } = await getHttp(`${this.apiURL}/${id}`);
+    async fetchUserById() {
+      const { data } = await getHttp(`${this.apiURL}/${this.userId}`);
       this.user = data;
+    },
+
+    async updateUser() {
+      await patchHttp(`${this.apiURL}/${this.userId}`, {
+        data: { ...this.user },
+      });
+
+      this.changeComponent('list-users');
     },
   },
 };
