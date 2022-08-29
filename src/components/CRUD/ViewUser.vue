@@ -5,13 +5,39 @@
 </template>
 
 <script>
+import { getHttp } from '@/http-utils/fetch-api';
+import ChangeComponent from '@/mixins/change-component';
+import ApiUrl from '@/mixins/api-url';
+
 export default {
   name: 'ViewUser',
 
   inject: ['userId'],
 
-  created() {
-    console.log(`View user with id : ${this.userId}`);
+  mixins: [ChangeComponent, ApiUrl],
+
+  async beforeMount() {
+    await this.initializeUserById();
+  },
+
+  data: () => ({
+    user: {
+      name: '',
+      email: '',
+      age: '',
+      company: '',
+      phone: '',
+      address: '',
+    },
+  }),
+
+  methods: {
+    async initializeUserById() {
+      if (this.userId) {
+        const { data } = await getHttp(`${this.apiURL}/${this.userId}`);
+        this.user = data;
+      }
+    },
   },
 };
 </script>
