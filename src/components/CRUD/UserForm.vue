@@ -83,6 +83,11 @@ export default {
   data: () => ({
     form: {
       name: '',
+      email: '',
+      age: '',
+      company: '',
+      phone: '',
+      address: '',
     },
   }),
 
