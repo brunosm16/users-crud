@@ -1,6 +1,37 @@
+<!-- eslint-disable vue/no-deprecated-v-on-native-modifier -->
 <template>
   <div class="view-user-component">
-    <span>View User Component</span>
+    <vs-card>
+      <template #header>
+        <h3>User Information</h3>
+      </template>
+
+      <vs-row>
+        <vs-col>
+          <UserForm v-model="user" />
+        </vs-col>
+      </vs-row>
+
+      <template #footer>
+        <vs-row>
+          <vs-button
+            color="primary"
+            icon="arrow_back"
+            type="filled"
+            size="small"
+            @click.native="changeComponent('list-users')"
+          />
+
+          <vs-button
+            color="success"
+            icon="edit"
+            type="filled"
+            size="small"
+            @click.native="changeComponent('update-user', user.id)"
+          />
+        </vs-row>
+      </template>
+    </vs-card>
   </div>
 </template>
 
@@ -8,9 +39,12 @@
 import { getHttp } from '@/http-utils/fetch-api';
 import ChangeComponent from '@/mixins/change-component';
 import ApiUrl from '@/mixins/api-url';
+import UserForm from './UserForm.vue';
 
 export default {
   name: 'ViewUser',
+
+  components: { UserForm },
 
   inject: ['userId'],
 
@@ -42,4 +76,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.vs-button {
+  margin-right: 1.25rem;
+}
+</style>
