@@ -44,6 +44,41 @@ const routes = [
     name: 'not-found',
     component: NotFoundError,
   },
+
+  {
+    path: '/users',
+    redirect: {
+      path: '/user',
+      name: 'list-users',
+    },
+  },
+
+  {
+    path: '/create-new-user',
+    redirect: {
+      path: '/user/create-user',
+      name: 'create-user',
+    },
+  },
+
+  {
+    path: '/my-user/:id?',
+    redirect({ params }) {
+      if (params?.id) {
+        return { path: '/user/view-user/:id', name: 'view-user' };
+      }
+      return { path: '/user', name: 'list-users' };
+    },
+  },
+
+  {
+    path: '*',
+    redirect: {
+      path: '/not-found',
+      name: 'not-found',
+      component: NotFoundError,
+    },
+  },
 ];
 
 const router = new VueRouter({

@@ -9,7 +9,7 @@ import {
 const createAxios = (options = {}) => axios.create({ ...options });
 
 const localAPI = createAxios({
-  baseURL: `${window.location.href}`,
+  baseURL: `${window.location.protocol}//${window.location.host}`,
 });
 
 export const jsonPlaceHolderAPI = createAxios({
