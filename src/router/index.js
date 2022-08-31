@@ -24,13 +24,13 @@ const routes = [
   },
 
   {
-    path: '/update-user',
+    path: '/update-user/:id',
     name: 'update-user',
     component: UpdateUser,
   },
 
   {
-    path: '/view-user',
+    path: '/view-user/:id',
     name: 'view-user',
     component: ViewUser,
   },
