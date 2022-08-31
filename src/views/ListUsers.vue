@@ -64,7 +64,7 @@
                     icon="remove_red_eye"
                     size="small"
                     @click.native="
-                      changeComponent('view-user', dataTable?.data[index]?.id)
+                      changeRoute('view-user', dataTable?.data[index]?.id)
                     "
                   />
                   <vs-button
@@ -73,7 +73,7 @@
                     icon="edit"
                     size="small"
                     @click.native="
-                      changeComponent('update-user', dataTable?.data[index]?.id)
+                      changeRoute('update-user', dataTable?.data[index]?.id)
                     "
                   />
 
@@ -98,7 +98,7 @@
             type="filled"
             icon="fiber_new"
             size="small"
-            @click.native="changeComponent('create-user')"
+            @click.native="changeRoute('create-user')"
           >
             Create A New User
           </vs-button>
