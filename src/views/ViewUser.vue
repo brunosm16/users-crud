@@ -19,7 +19,7 @@
             icon="arrow_back"
             type="filled"
             size="small"
-            @click.native="changeComponent('list-users')"
+            @click.native="changeRoute('list-users')"
           />
 
           <vs-button
@@ -27,7 +27,7 @@
             icon="edit"
             type="filled"
             size="small"
-            @click.native="changeComponent('update-user', user.id)"
+            @click.native="changeRoute('update-user', user.id)"
           />
         </vs-row>
       </template>
@@ -46,8 +46,6 @@ export default {
 
   components: { UserForm },
 
-  inject: ['userId'],
-
   mixins: [ChangeRoute, ApiUrl],
 
   async beforeMount() {
@@ -64,6 +62,12 @@ export default {
       address: '',
     },
   }),
+
+  computed: {
+    userId() {
+      return this.$route?.params?.id;
+    },
+  },
 
   methods: {
     async initializeUserById() {
