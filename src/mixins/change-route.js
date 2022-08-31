@@ -3,7 +3,7 @@ export default {
     changeRoute(name, id) {
       this.$router.push({
         name,
-        ...(id && { params: id }),
+        ...(id && { params: { id } }),
       });
     },
   },
