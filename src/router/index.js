@@ -1,6 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import { ListUsers } from '@/views';
+import {
+  CreateUser,
+  ListUsers,
+  NotFoundError,
+  UpdateUser,
+  ViewUser,
+} from '@/views';
 
 Vue.use(VueRouter);
 
@@ -9,6 +15,30 @@ const routes = [
     path: '/',
     name: 'list-users',
     component: ListUsers,
+  },
+
+  {
+    path: '/create-user',
+    name: 'create-user',
+    component: CreateUser,
+  },
+
+  {
+    path: '/update-user',
+    name: 'update-user',
+    component: UpdateUser,
+  },
+
+  {
+    path: '/view-user',
+    name: 'view-user',
+    component: ViewUser,
+  },
+
+  {
+    path: '/not-found',
+    name: 'not-found',
+    component: NotFoundError,
   },
 ];
 
