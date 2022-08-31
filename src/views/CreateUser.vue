@@ -40,7 +40,7 @@
 import { postHttp } from '@/http-utils/fetch-api';
 import ChangeComponent from '@/mixins/change-component';
 import ApiUrl from '@/mixins/api-url';
-import UserForm from './UserForm.vue';
+import UserForm from '../components/UserForm.vue';
 
 export default {
   name: 'CreateUser',
