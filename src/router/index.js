@@ -12,26 +12,30 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
+    path: '/user',
     name: 'list-users',
+    alias: '/',
     component: ListUsers,
   },
 
   {
-    path: '/create-user',
+    path: '/user/create-user',
     name: 'create-user',
+    alias: '/create-user',
     component: CreateUser,
   },
 
   {
-    path: '/update-user/:id',
+    path: '/user/update-user/:id',
     name: 'update-user',
+    alias: '/update-user/:id',
     component: UpdateUser,
   },
 
   {
-    path: '/view-user/:id',
+    path: '/user/view-user/:id',
     name: 'view-user',
+    alias: '/view-user/:id',
     component: ViewUser,
   },
 
