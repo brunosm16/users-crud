@@ -65,11 +65,11 @@ export default {
   methods: {
     async createUser() {
       await postHttp(this.apiURL, { data: { ...this.formData } });
-      this.changeComponent('list-users');
+      this.changeRoute('list-users');
     },
 
     cancelCreate() {
-      this.changeComponent('list-users');
+      this.changeRoute('list-users');
     },
   },
 };
