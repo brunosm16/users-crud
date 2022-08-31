@@ -110,13 +110,13 @@
 
 <script>
 import { getHttp, deleteHttp } from '@/http-utils/fetch-api';
-import ChangeComponent from '@/mixins/change-component';
+import ChangeRoute from '@/mixins/change-route';
 import ApiUrl from '@/mixins/api-url';
 
 export default {
   name: 'ListUsers',
 
-  mixins: [ChangeComponent, ApiUrl],
+  mixins: [ChangeRoute, ApiUrl],
 
   data: () => ({
     users: [],

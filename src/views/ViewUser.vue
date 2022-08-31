@@ -8,7 +8,7 @@
 
       <vs-row>
         <vs-col>
-          <UserForm v-model="user" disabled/>
+          <UserForm v-model="user" disabled />
         </vs-col>
       </vs-row>
 
@@ -37,7 +37,7 @@
 
 <script>
 import { getHttp } from '@/http-utils/fetch-api';
-import ChangeComponent from '@/mixins/change-component';
+import ChangeRoute from '@/mixins/change-route';
 import ApiUrl from '@/mixins/api-url';
 import UserForm from '../components/UserForm.vue';
 
@@ -48,7 +48,7 @@ export default {
 
   inject: ['userId'],
 
-  mixins: [ChangeComponent, ApiUrl],
+  mixins: [ChangeRoute, ApiUrl],
 
   async beforeMount() {
     await this.initializeUserById();
