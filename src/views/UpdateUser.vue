@@ -68,12 +68,12 @@ export default {
 
   methods: {
     async fetchUserById() {
-      const { data } = await getHttp(`${this.apiURL}/${this.userId}`);
+      const { data } = await getHttp(`${this.getApiUrlById(this.userId)}`);
       this.user = data;
     },
 
     async updateUser() {
-      await patchHttp(`${this.apiURL}/${this.userId}`, {
+      await patchHttp(`${this.getApiUrlById(this.userId)}`, {
         data: { ...this.user },
       });
 

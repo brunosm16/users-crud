@@ -68,7 +68,7 @@ export default {
   methods: {
     async initializeUserById() {
       if (this.userId) {
-        const { data } = await getHttp(`${this.apiURL}/${this.userId}`);
+        const { data } = await getHttp(`${this.getApiUrlById(this.userId)}`);
         this.user = data;
       }
     },
