@@ -26,7 +26,7 @@
             type="filled"
             icon="cancel"
             size="small"
-            @click.native="changeComponent('list-users')"
+            @click.native="changeRoute('list-users')"
           />
         </vs-row>
       </template>
@@ -42,8 +42,6 @@ import UserForm from '@/components/UserForm.vue';
 
 export default {
   name: 'UpdateUser',
-
-  inject: ['userId'],
 
   mixins: [ChangeRoute, ApiUrl],
 
@@ -66,6 +64,12 @@ export default {
     await this.fetchUserById();
   },
 
+  computed: {
+    userId() {
+      return this.$route?.params?.id;
+    },
+  },
+
   methods: {
     async fetchUserById() {
       const { data } = await getHttp(`${this.getApiUrlById(this.userId)}`);
@@ -77,7 +81,7 @@ export default {
         data: { ...this.user },
       });
 
-      this.changeComponent('list-users');
+      this.changeRoute('list-users');
     },
   },
 };
