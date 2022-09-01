@@ -27,6 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 .not-found-error {
+  margin-top: 2rem;
   &__text {
     margin-bottom: 4rem;
     text-align: center;
