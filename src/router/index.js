@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import NotFoundError from '@/views/NotFoundError.vue';
+import LoginPage from '@/views/LoginPage.vue';
 import UserRoutes from './user-routes';
 
 Vue.use(VueRouter);
@@ -10,6 +11,11 @@ const routes = [
   {
     path: '/',
     redirect: '/user',
+  },
+  {
+    path: '/login',
+    name: '/login',
+    component: LoginPage,
   },
   {
     path: '*',

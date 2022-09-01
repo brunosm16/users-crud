@@ -1,5 +1,26 @@
 <template>
-  <div class="login-page"> </div>
+  <div class="login-page">
+    <vs-row vs-align="center" vs-justify="center">
+      <vs-col vs-lg="4" vs-sm="6" vs-xs="10">
+        <vs-card style="margin: 30px">
+          <template #header>
+            <h3>Login</h3>
+          </template>
+
+          <vs-row vs-align="center" vs-justify="center">
+            <vs-col w="12">
+              <vs-input
+                danger-text="Check your username or e-mail"
+                label="Username"
+                placeholder="Enter Username or Email"
+                v-model="username"
+              />
+            </vs-col>
+          </vs-row>
+        </vs-card>
+      </vs-col>
+    </vs-row>
+  </div>
 </template>
 
 <script>
