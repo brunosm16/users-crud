@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-deprecated-v-on-native-modifier -->
 <template>
   <div class="login-page">
     <vs-row vs-align="center" vs-justify="center">
@@ -13,10 +14,33 @@
                 danger-text="Check your username or e-mail"
                 label="Username"
                 placeholder="Enter Username or Email"
-                v-model="username"
+                v-model="userName"
+                :danger="error"
+              />
+
+              <vs-input
+                danger-text="Check your password"
+                label="Password"
+                placeholder="Enter your password"
+                v-model="userPassword"
+                :danger="error"
               />
             </vs-col>
           </vs-row>
+
+          <template #footer>
+            <vs-row vs-justify="flex-start">
+              <vs-button
+                color="success"
+                type="filled"
+                icon="account_circle"
+                size="small"
+                @click.native="signIn"
+              >
+                Sign In
+              </vs-button>
+            </vs-row>
+          </template>
         </vs-card>
       </vs-col>
     </vs-row>
@@ -47,17 +71,15 @@ export default {
     },
 
     encryptName(name) {
-      return window.atob(JSON.stringify(name));
+      return window.btoa(JSON.stringify({ username: JSON.stringify(name) }));
     },
 
     setAuthSessionStorage(name) {
-      window.sessionStorage.setItem('auth', {
-        username: this.encryptName(name),
-      });
+      window.sessionStorage.setItem('auth', this.encryptName(name));
     },
 
     redirectToHome() {
-      this.$$router.replace('/user');
+      this.$router.replace('/user');
     },
 
     setError(value) {
@@ -67,4 +89,14 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.login-page {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+
+  .vs-input {
+    margin: 30px 16px;
+  }
+}
+</style>
