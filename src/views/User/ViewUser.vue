@@ -39,7 +39,7 @@
 import { getHttp } from '@/http-utils/fetch-api';
 import ChangeRoute from '@/mixins/change-route';
 import ApiUrl from '@/mixins/api-url';
-import UserForm from '../components/UserForm.vue';
+import UserForm from '../../components/UserForm.vue';
 
 export default {
   name: 'ViewUser',
