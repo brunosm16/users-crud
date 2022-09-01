@@ -66,8 +66,7 @@
                         icon="remove_red_eye"
                         size="small"
                         @click.native="
-                          changeRoute('view-user', dataTable?.data[index]?.id)
-                        "
+                          changeRoute('view-user', dataTable?.data[index]?.id)"
                       />
                       <vs-button
                         color="success"
@@ -75,8 +74,7 @@
                         icon="edit"
                         size="small"
                         @click.native="
-                          changeRoute('update-user', dataTable?.data[index]?.id)
-                        "
+                          changeRoute('update-user', dataTable?.data[index]?.id)"
                       />
 
                       <vs-button
@@ -85,8 +83,7 @@
                         icon="delete"
                         size="small"
                         @click.native="
-                          deleteUserById(dataTable?.data[index]?.id)
-                        "
+                          deleteUserById(dataTable?.data[index]?.id)"
                       />
                     </vs-td>
                   </vs-tr>

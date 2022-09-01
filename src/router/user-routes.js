@@ -9,7 +9,6 @@ import {
 export default [
   {
     path: '/user',
-    name: 'user',
     component: UserWrapper,
     children: [
       {
