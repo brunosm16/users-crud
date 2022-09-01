@@ -1,15 +1,7 @@
-import {
-  CreateUser,
-  ListUsers,
-  UpdateUser,
-  UserWrapper,
-  ViewUser,
-} from '@/views/User';
-
 export default [
   {
     path: '/user',
-    component: UserWrapper,
+    component: () => import('@/views/User/UserWrapper.vue'),
     meta: {
       authenticated: true,
     },
@@ -17,7 +9,7 @@ export default [
       {
         path: '',
         name: 'list-users',
-        component: ListUsers,
+        component: () => import('@/views/User/ListUsers.vue'),
         meta: {
           authenticated: true,
         },
@@ -26,7 +18,7 @@ export default [
       {
         path: 'create-user',
         name: 'create-user',
-        component: CreateUser,
+        component: () => import('@/views/User/CreateUser.vue'),
         meta: {
           authenticated: true,
         },
@@ -35,7 +27,7 @@ export default [
       {
         path: 'update-user/:id',
         name: 'update-user',
-        component: UpdateUser,
+        component: () => import('@/views/User/UpdateUser.vue'),
         meta: {
           authenticated: true,
         },
@@ -44,7 +36,7 @@ export default [
       {
         path: 'view-user/:id',
         name: 'view-user',
-        component: ViewUser,
+        component: () => import('@/views/User/ViewUser.vue'),
         meta: {
           authenticated: true,
         },

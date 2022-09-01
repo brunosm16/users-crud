@@ -1,7 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import NotFoundError from '@/views/NotFoundError.vue';
-import LoginPage from '@/views/LoginPage.vue';
 import UserRoutes from './user-routes';
 import AuthMiddleware from './middleware/auth';
 
@@ -16,14 +14,14 @@ const routes = [
   {
     path: '/login',
     name: '/login',
-    component: LoginPage,
+    component: () => import('@/views/LoginPage.vue'),
     meta: {
       authenticated: false,
     },
   },
   {
     path: '*',
-    component: NotFoundError,
+    component: () => import('@/views/NotFoundError.vue'),
     meta: {
       authenticated: false,
     },
