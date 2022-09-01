@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import NotFoundError from '@/views/NotFoundError.vue';
 import UserRoutes from './user-routes';
 
 Vue.use(VueRouter);
@@ -7,8 +8,12 @@ Vue.use(VueRouter);
 const routes = [
   ...UserRoutes,
   {
-    path: '*',
+    path: '/',
     redirect: '/user',
+  },
+  {
+    path: '*',
+    component: NotFoundError,
   },
 ];
 
