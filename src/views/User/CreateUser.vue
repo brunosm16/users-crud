@@ -37,15 +37,13 @@
 </template>
 
 <script>
-import { postHttp } from '@/http-utils/fetch-api';
 import ChangeRoute from '@/mixins/change-route';
-import ApiUrl from '@/mixins/api-url';
 import UserForm from '../../components/UserForm.vue';
 
 export default {
   name: 'CreateUser',
 
-  mixins: [ChangeRoute, ApiUrl],
+  mixins: [ChangeRoute],
 
   components: {
     UserForm,
@@ -64,7 +62,7 @@ export default {
 
   methods: {
     async createUser() {
-      await postHttp(this.apiURL, { data: { ...this.formData } });
+      await this.$store.dispatch('createUser', this.formData);
       this.changeRoute('list-users');
     },
 
