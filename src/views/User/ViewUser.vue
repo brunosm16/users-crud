@@ -8,7 +8,7 @@
 
       <vs-row>
         <vs-col>
-          <UserForm v-model="user" disabled />
+          <UserForm :value="user" disabled />
         </vs-col>
       </vs-row>
 
@@ -36,9 +36,7 @@
 </template>
 
 <script>
-import { getHttp } from '@/http-utils/fetch-api';
 import ChangeRoute from '@/mixins/change-route';
-import ApiUrl from '@/mixins/api-url';
 import UserForm from '../../components/UserForm.vue';
 
 export default {
@@ -46,34 +44,26 @@ export default {
 
   components: { UserForm },
 
-  mixins: [ChangeRoute, ApiUrl],
+  mixins: [ChangeRoute],
 
   async beforeMount() {
     await this.initializeUserById();
   },
 
-  data: () => ({
-    user: {
-      name: '',
-      email: '',
-      age: '',
-      company: '',
-      phone: '',
-      address: '',
-    },
-  }),
-
   computed: {
     userId() {
       return this.$route?.params?.id;
+    },
+
+    user() {
+      return this.$store.getters.getUserData;
     },
   },
 
   methods: {
     async initializeUserById() {
       if (this.userId) {
-        const { data } = await getHttp(`${this.getApiUrlById(this.userId)}`);
-        this.user = data;
+        await this.$store.dispatch('fetchUserById', this.userId);
       }
     },
   },

@@ -29,9 +29,9 @@ const fetchUserById = async ({ commit }, userId) => {
   try {
     setLoadingTrue(commit);
 
-    const { userData } = await getHttp(`${API_ENDPOINT}/${userId}`);
+    const { data } = await getHttp(`${API_ENDPOINT}/${userId}`);
 
-    commit(MutationTypes.SET_USER_DATA, userData);
+    commit(MutationTypes.SET_USER_DATA, data);
   } catch {
     setErrorTrue(commit);
   }
