@@ -36,8 +36,6 @@
 <script>
 import ChangeRoute from '@/mixins/change-route';
 import UsersListTable from '@/components/UsersListTable.vue';
-import { apiURLById } from '@/utils/api-url';
-import { deleteHttp } from '@/http-utils/fetch-api';
 
 export default {
   name: 'ListUsers',
@@ -63,7 +61,7 @@ export default {
 
     async onDelete(userId) {
       if (userId) {
-        await deleteHttp(apiURLById(userId));
+        this.$store.dispatch('removeUser', userId);
         await this.fetchUsers();
       }
     },
