@@ -8,7 +8,7 @@
 
       <vs-row>
         <vs-col>
-          <UserForm v-model="user" />
+          <UserForm v-model="userForm" />
         </vs-col>
       </vs-row>
 
@@ -35,22 +35,20 @@
 </template>
 
 <script>
-import { getHttp, patchHttp } from '@/http-utils/fetch-api';
 import ChangeRoute from '@/mixins/change-route';
-import ApiUrl from '@/mixins/api-url';
 import UserForm from '@/components/UserForm.vue';
 
 export default {
   name: 'UpdateUser',
 
-  mixins: [ChangeRoute, ApiUrl],
+  mixins: [ChangeRoute],
 
   components: {
     UserForm,
   },
 
   data: () => ({
-    user: {
+    userForm: {
       name: '',
       email: '',
       age: '',
@@ -68,17 +66,31 @@ export default {
     userId() {
       return this.$route?.params?.id;
     },
+
+    userData() {
+      return this.$store.getters.getUserData;
+    },
+  },
+
+  watch: {
+    userData: {
+      handler(newData) {
+        this.userForm = newData;
+      },
+      deep: true,
+      immediate: true,
+    },
   },
 
   methods: {
     async fetchUserById() {
-      const { data } = await getHttp(`${this.getApiUrlById(this.userId)}`);
-      this.user = data;
+      await this.$store.dispatch('fetchUserById', this.userId);
     },
 
     async updateUser() {
-      await patchHttp(`${this.getApiUrlById(this.userId)}`, {
-        data: { ...this.user },
+      this.$store.dispatch('updateUser', {
+        id: this.userId,
+        data: { ...this.userForm },
       });
 
       this.changeRoute('list-users');
