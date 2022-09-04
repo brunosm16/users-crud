@@ -17,9 +17,9 @@ const fetchUsersList = async ({ commit }) => {
   try {
     setLoadingTrue(commit);
 
-    const { userData } = await getHttp(API_ENDPOINT);
+    const { data } = await getHttp(API_ENDPOINT);
 
-    commit(MutationTypes.SET_USERS_LIST, userData);
+    commit(MutationTypes.SET_USERS_LIST, data);
   } catch {
     setErrorTrue(commit);
   }
