@@ -10,8 +10,8 @@ const defaultUserState = () => ({
       address: '',
     },
   },
-  loading: false,
-  error: null,
+  isLoading: false,
+  hasError: null,
 });
 
 export default { ...defaultUserState() };
