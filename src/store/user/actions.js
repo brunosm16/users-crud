@@ -51,12 +51,12 @@ const createUser = async ({ commit }, payload) => {
   }
 };
 
-const updateUser = async ({ commit }, payload) => {
+const updateUser = async ({ commit }, { id, data }) => {
   try {
     setLoadingTrue(commit);
 
-    const { userData } = await patchHttp(`${API_ENDPOINT}/${payload.id}`, {
-      data: { ...payload },
+    const { userData } = await patchHttp(`${API_ENDPOINT}/${id}`, {
+      data: { ...data },
     });
 
     commit(MutationTypes.UPDATE_USER, userData);
